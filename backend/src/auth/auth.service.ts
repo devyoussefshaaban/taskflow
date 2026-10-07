@@ -81,4 +81,23 @@ export class AuthService {
       accessToken,
     };
   }
+
+  async getMe(id: number) {
+    const user = await this.dbService.user.findUnique({
+      where: {
+        id,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+      },
+    });
+
+    if (!user) {
+      throw new UnauthorizedException('Unauthorized. No token.');
+    }
+
+    return user;
+  }
 }
