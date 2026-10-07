@@ -1,8 +1,12 @@
-import { ConflictException, Injectable } from '@nestjs/common';
-import { TaskCreateInput, TaskUpdateInput } from 'generated/prisma/models';
+import {
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+} from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { Prisma } from '../../generated/prisma/client';
 import { CreateTaskDto } from './dto/create-task-dto';
+import { UpdateTaskDto } from './dto/update-task-dto';
 
 @Injectable()
 export class TasksService {
@@ -12,10 +16,10 @@ export class TasksService {
     return this.dbService.task.findMany();
   }
 
-  async createTask(taskCreateInput: CreateTaskDto) {
+  async createTask(createTaskDto: CreateTaskDto) {
     try {
       return await this.dbService.task.create({
-        data: taskCreateInput,
+        data: createTaskDto,
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -25,15 +29,16 @@ export class TasksService {
           );
         }
       }
+      throw error;
     }
   }
 
-  updateTask(id: number, taskUpdateInpt: TaskUpdateInput) {
+  updateTask(id: number, updateTaskDto: UpdateTaskDto) {
     return this.dbService.task.update({
       where: {
         id,
       },
-      data: taskUpdateInpt,
+      data: updateTaskDto,
     });
   }
 

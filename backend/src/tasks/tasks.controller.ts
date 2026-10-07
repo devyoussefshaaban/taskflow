@@ -9,9 +9,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import type { TaskCreateInput, TaskUpdateInput } from 'generated/prisma/models';
-import { log } from 'console';
 import { CreateTaskDto } from './dto/create-task-dto';
+import { UpdateTaskDto } from './dto/update-task-dto';
 
 @Controller('tasks')
 export class TasksController {
@@ -23,16 +22,16 @@ export class TasksController {
   }
 
   @Post()
-  createTask(@Body() taskCreateInput: CreateTaskDto) {
-    return this.tasksService.createTask(taskCreateInput);
+  createTask(@Body() createTaskDto: CreateTaskDto) {
+    return this.tasksService.createTask(createTaskDto);
   }
 
   @Patch(':id')
   updateTask(
     @Param('id', ParseIntPipe) id: number,
-    taskUpdateInput: TaskUpdateInput,
+    updateTaskDto: UpdateTaskDto,
   ) {
-    return this.tasksService.updateTask(id, taskUpdateInput);
+    return this.tasksService.updateTask(id, updateTaskDto);
   }
 
   @Delete(':id')
