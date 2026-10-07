@@ -1,0 +1,126 @@
+# ==========================================
+# Dependencies
+# ==========================================
+
+# Ignore node_modules everywhere in the repository
+**/node_modules/
+node_modules/
+
+# Package manager files
+.pnpm-store/
+.yarn/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/install-state.gz
+
+
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+
+# Ignore all environment files everywhere
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Explicitly ignore common environment variants
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+**/.env.local
+**/.env.development
+**/.env.development.local
+**/.env.test
+**/.env.test.local
+**/.env.production
+**/.env.production.local
+
+
+# ==========================================
+# Build & Generated Files
+# ==========================================
+
+# Next.js
+**/.next/
+**/out/
+
+# NestJS / TypeScript
+**/dist/
+**/build/
+
+# TypeScript
+**/*.tsbuildinfo
+
+
+# ==========================================
+# Prisma
+# ==========================================
+
+# Prisma generated files
+**/node_modules/.prisma/
+**/node_modules/@prisma/client/
+
+
+# ==========================================
+# Testing & Coverage
+# ==========================================
+
+**/coverage/
+**/.nyc_output/
+
+
+# ==========================================
+# Logs
+# ==========================================
+
+**/*.log
+**/logs/
+
+
+# ==========================================
+# Cache
+# ==========================================
+
+**/.cache/
+**/.turbo/
+**/.eslintcache
+
+
+# ==========================================
+# OS Files
+# ==========================================
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+
+# ==========================================
+# IDE / Editor
+# ==========================================
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+.idea/
+*.swp
+*.swo
+
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+**/*.tmp
+**/*.temp
+**/*.bak
