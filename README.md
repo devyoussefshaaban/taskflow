@@ -1,93 +1,151 @@
-# TaskFlow
+# 🚀 TaskFlow
 
-### Open-source project and task management platform
+### Open-source project & task management platform
+
+> 🟢 **Open Source · Actively Developed · Contributions Welcome**
 
 TaskFlow is a modern full-stack project management platform designed to help individuals and teams organize projects, manage tasks, collaborate with team members, and track work from a centralized workspace.
 
-The project is built with a modern TypeScript-based stack and follows practical patterns for building scalable REST APIs, relational data models, and maintainable full-stack applications.
+Built with **NestJS, Prisma, PostgreSQL, Next.js, React, and TypeScript**, TaskFlow focuses on practical backend architecture, relational data modeling, RESTful API design, validation, authentication, and maintainable full-stack development.
 
 > **TaskFlow is an open-source project created and maintained by [Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/).**
 
 ---
 
-## Overview
+## 🟢 Open Source & Actively Developed
 
-TaskFlow provides a structured workspace where users can create projects, organize tasks, assign work to team members, communicate through task comments, and track project progress.
+TaskFlow is an **open-source project under active development**.
 
-The project is designed around a clear separation between the frontend application and backend API.
+The project is being built incrementally with a focus on:
 
-### Core capabilities
+- 🧱 Scalable architecture
+- 🔐 Authentication & authorization
+- 🗄️ Relational database design
+- 🧩 Modular backend architecture
+- 🔌 RESTful API design
+- ✅ Input validation
+- 🧪 Automated testing
+- 🎨 Modern frontend development
+- 📈 Performance and maintainability
 
-- User authentication and authorization
-- Project management
-- Project membership and roles
-- Task management
+Contributions, ideas, feedback, and discussions are welcome.
+
+> ⭐ **If you find TaskFlow useful or interesting, consider starring the repository and following the project as it evolves.**
+
+---
+
+## ✨ Features
+
+### 👤 Authentication & Users
+
+- User registration and authentication
+- Authorization and role management
+- User profiles
+- Project ownership
+- Team membership
+
+### 📁 Project Management
+
+- Create and manage projects
+- Project members
+- Project-level roles
+- Project lifecycle status
+- Project dashboards
+
+### ✅ Task Management
+
+- Create, update, and delete tasks
 - Task assignment
-- Task priorities and statuses
+- Task priorities
+- Task statuses
 - Due dates
+- Filtering and sorting
+- Pagination
+- Search
+
+### 💬 Collaboration
+
 - Task comments
-- Filtering, sorting, and pagination
-- Responsive project dashboard
-- RESTful API
-- Relational database architecture
+- Team collaboration
+- Project discussions
+
+### 🎯 Planned
+
+- Kanban board
+- Activity logs
+- Notifications
+- File attachments
+- Task labels
+- Real-time updates
+- Background jobs
+- CI/CD
+- Production deployment
 
 ---
 
-## Technology Stack
+# 🛠️ Technology Stack
 
-### Backend
+## Backend
 
-| Technology | Purpose                    |
-| ---------- | -------------------------- |
-| NestJS     | Backend framework          |
-| TypeScript | Application language       |
-| Prisma     | ORM and database toolkit   |
-| PostgreSQL | Relational database        |
-| Neon       | Managed PostgreSQL hosting |
+| Technology        | Purpose                    |
+| ----------------- | -------------------------- |
+| 🟢 **NestJS**     | Backend framework          |
+| 🔷 **TypeScript** | Application language       |
+| 🟣 **Prisma**     | ORM & database toolkit     |
+| 🐘 **PostgreSQL** | Relational database        |
+| ☁️ **Neon**       | Managed PostgreSQL hosting |
 
-### Frontend
+## Frontend
 
-| Technology   | Purpose                 |
-| ------------ | ----------------------- |
-| Next.js      | React framework         |
-| React        | UI library              |
-| TypeScript   | Application language    |
-| Tailwind CSS | Styling                 |
-| React Query  | Server-state management |
+| Technology          | Purpose                 |
+| ------------------- | ----------------------- |
+| ▲ **Next.js**       | React framework         |
+| ⚛️ **React**        | UI library              |
+| 🔷 **TypeScript**   | Application language    |
+| 🎨 **Tailwind CSS** | Styling                 |
+| 🔄 **React Query**  | Server-state management |
 
-### Development & Tooling
+## Development & Tooling
 
-| Technology | Purpose                          |
-| ---------- | -------------------------------- |
-| Git        | Version control                  |
-| GitHub     | Source control and collaboration |
-| ESLint     | Code quality                     |
-| Prettier   | Code formatting                  |
+| Technology      | Purpose                        |
+| --------------- | ------------------------------ |
+| 🐙 **Git**      | Version control                |
+| 🐙 **GitHub**   | Source control & collaboration |
+| 🔍 **ESLint**   | Code quality                   |
+| ✨ **Prettier** | Code formatting                |
 
 ---
 
-## Architecture
+# 🏗️ Architecture
 
 TaskFlow follows a separated frontend/backend architecture.
 
 ```text
-Frontend
-Next.js + React + TypeScript
-        │
-        │ REST API
-        ▼
-Backend
-NestJS + TypeScript
-        │
-        │ Prisma
-        ▼
-PostgreSQL
-        │
-        ▼
-Neon
+┌─────────────────────────────────────┐
+│              Frontend               │
+│      Next.js + React + TypeScript   │
+└──────────────────┬──────────────────┘
+                   │
+                   │ REST API
+                   ▼
+┌─────────────────────────────────────┐
+│               Backend               │
+│       NestJS + TypeScript           │
+└──────────────────┬──────────────────┘
+                   │
+                   │ Prisma
+                   ▼
+┌─────────────────────────────────────┐
+│             PostgreSQL              │
+└──────────────────┬──────────────────┘
+                   │
+                   ▼
+┌─────────────────────────────────────┐
+│                Neon                 │
+└─────────────────────────────────────┘
 ```
 
-### Repository structure
+### 📂 Repository Structure
 
 ```text
 taskflow/
@@ -116,23 +174,21 @@ taskflow/
 │   └── package.json
 │
 ├── docs/
-│
 ├── .github/
-│
 ├── LICENSE
 ├── README.md
 └── .gitignore
 ```
 
-The project is organized by domain to keep business logic isolated, maintainable, and easier to extend as the application grows.
+The project is organized around business domains so that each feature can encapsulate its own controllers, services, DTOs, validation, business logic, and database operations.
 
 ---
 
-# Core Domain
+# 🧩 Core Domain
 
-TaskFlow currently revolves around five primary entities:
+TaskFlow currently revolves around five primary entities.
 
-### User
+### 👤 User
 
 Represents an authenticated application user.
 
@@ -143,7 +199,7 @@ Users can:
 - Be assigned tasks
 - Write comments
 
-### Project
+### 📁 Project
 
 Represents a workspace containing a collection of tasks.
 
@@ -154,13 +210,13 @@ A project has:
 - Tasks
 - A lifecycle status
 
-### Project Member
+### 👥 Project Member
 
 Represents a user's membership in a project.
 
-This entity handles the many-to-many relationship between users and projects and allows project-level roles to be introduced.
+`ProjectMember` acts as the join entity between users and projects and supports project-level roles.
 
-### Task
+### ✅ Task
 
 Represents a unit of work inside a project.
 
@@ -174,41 +230,41 @@ Tasks support:
 - Due date
 - Comments
 
-### Comment
+### 💬 Comment
 
 Represents a discussion attached to a task.
 
-Comments belong to both:
+Each comment belongs to:
 
 - A task
-- The user who created the comment
+- The user who created it
 
 ---
 
-# Database
+# 🗄️ Database
 
 TaskFlow uses **PostgreSQL** as its primary database and **Prisma** as the ORM.
 
-The database is designed around relational integrity and explicit relationships rather than storing application state as unstructured data.
+The database emphasizes relational integrity, explicit relationships, and database-level constraints.
 
-### Primary relationships
+### 🔗 Primary Relationships
 
 ```text
 User
- ├── owns → Projects
- ├── joins → Projects
- ├── assigned → Tasks
- └── writes → Comments
+ ├── owns ────────→ Projects
+ ├── joins ────────→ Projects
+ ├── assigned ────→ Tasks
+ └── writes ──────→ Comments
 
 Project
- ├── has → Members
- └── contains → Tasks
+ ├── has ─────────→ Members
+ └── contains ────→ Tasks
 
 Task
- └── contains → Comments
+ └── contains ────→ Comments
 ```
 
-### Entity relationships
+### Entity Relationships
 
 ```text
 User 1 ─── N Project
@@ -219,9 +275,7 @@ Task 1 ─── N Comment
 User 1 ─── N Comment
 ```
 
-The `ProjectMember` entity acts as the join entity between `User` and `Project`.
-
-Detailed database documentation can be found under:
+Detailed database documentation is available under:
 
 ```text
 docs/
@@ -229,7 +283,7 @@ docs/
 
 ---
 
-# Backend
+# ⚙️ Backend
 
 The backend is built with **NestJS** and follows a modular architecture.
 
@@ -238,25 +292,25 @@ Each major business domain is represented by its own NestJS module.
 ```text
 backend/src/
 
-auth/
-users/
-projects/
-tasks/
-comments/
-prisma/
-common/
+├── auth/
+├── users/
+├── projects/
+├── tasks/
+├── comments/
+├── prisma/
+└── common/
 ```
 
-This structure allows each domain to encapsulate its:
+Each domain is responsible for its own:
 
 - Controllers
 - Services
 - DTOs
 - Validation
-- Business logic
+- Business rules
 - Database operations
 
-### API design
+### 🔌 API Design
 
 The backend exposes a RESTful API organized around resources.
 
@@ -269,9 +323,7 @@ The backend exposes a RESTful API organized around resources.
 └── comments
 ```
 
-Example endpoints:
-
-### Authentication
+### 🔐 Authentication
 
 ```http
 POST /auth/register
@@ -279,7 +331,7 @@ POST /auth/login
 GET  /auth/me
 ```
 
-### Projects
+### 📁 Projects
 
 ```http
 POST   /projects
@@ -289,7 +341,7 @@ PATCH  /projects/:id
 DELETE /projects/:id
 ```
 
-### Tasks
+### ✅ Tasks
 
 ```http
 POST   /projects/:projectId/tasks
@@ -299,7 +351,7 @@ PATCH  /tasks/:id
 DELETE /tasks/:id
 ```
 
-### Comments
+### 💬 Comments
 
 ```http
 POST   /tasks/:taskId/comments
@@ -309,43 +361,43 @@ DELETE /comments/:id
 
 ---
 
-# Frontend
+# 💻 Frontend
 
 The frontend is built with **Next.js, React, TypeScript, and Tailwind CSS**.
 
-React Query is used for server-state management and communication with the backend API.
+React Query handles server-state management and communication with the backend API.
 
 The frontend is responsible for:
 
-- Authentication flows
-- Project dashboards
-- Project management
-- Task management
-- Task assignment
-- Task filtering and sorting
-- Comments
-- Responsive user interfaces
+- 🔐 Authentication
+- 📊 Project dashboards
+- 📁 Project management
+- ✅ Task management
+- 👥 Team management
+- 🔎 Task filtering and sorting
+- 💬 Comments
+- 📱 Responsive interfaces
 
-The frontend communicates with the NestJS API rather than directly accessing the database.
+The frontend communicates exclusively with the NestJS API and does not access the database directly.
 
 ---
 
-# Getting Started
+# 🚀 Getting Started
 
 ## Prerequisites
 
-Make sure you have the following installed:
+Make sure you have:
 
 - Node.js 20+
 - npm
 - Git
 - PostgreSQL database
 
-A hosted PostgreSQL database such as Neon can be used for development.
+A hosted PostgreSQL provider such as Neon can be used for development.
 
 ---
 
-## Clone the repository
+## 📥 Clone the Repository
 
 ```bash
 git clone https://github.com/devyoussefshaaban/taskflow.git
@@ -355,7 +407,7 @@ cd taskflow
 
 ---
 
-# Backend Setup
+# 🔧 Backend Setup
 
 Navigate to the backend:
 
@@ -375,7 +427,7 @@ Create your environment file:
 cp .env.example .env
 ```
 
-Configure the required environment variables:
+Configure your environment variables:
 
 ```env
 DATABASE_URL="your-postgresql-connection-string"
@@ -389,7 +441,7 @@ Generate the Prisma client:
 npx prisma generate
 ```
 
-Run the database migrations:
+Run database migrations:
 
 ```bash
 npx prisma migrate dev
@@ -401,7 +453,7 @@ Start the development server:
 npm run start:dev
 ```
 
-The API will be available at:
+Backend:
 
 ```text
 http://localhost:3000
@@ -409,7 +461,7 @@ http://localhost:3000
 
 ---
 
-# Frontend Setup
+# 🎨 Frontend Setup
 
 Open a new terminal:
 
@@ -441,7 +493,7 @@ Start the development server:
 npm run dev
 ```
 
-The frontend will be available at:
+Frontend:
 
 ```text
 http://localhost:3001
@@ -449,9 +501,9 @@ http://localhost:3001
 
 ---
 
-# Environment Variables
+# 🔐 Environment Variables
 
-## Backend
+### Backend
 
 ```env
 DATABASE_URL=
@@ -459,40 +511,23 @@ JWT_SECRET=
 PORT=3000
 ```
 
-## Frontend
+### Frontend
 
 ```env
 NEXT_PUBLIC_API_URL=
 ```
 
-Environment files containing secrets must never be committed to the repository.
+> ⚠️ **Never commit `.env`, `.env.local`, or other files containing secrets.**
 
 Use the provided `.env.example` files as templates.
 
 ---
 
-# Development
-
-The project is actively developed with a focus on:
-
-- Type safety
-- Clear separation of concerns
-- Modular architecture
-- Maintainable business logic
-- Relational database design
-- RESTful API principles
-- Input validation
-- Authentication and authorization
-- Reusable frontend components
-- Predictable server-state management
-
----
-
-# Roadmap
+# 🗺️ Roadmap
 
 TaskFlow is being developed incrementally.
 
-## Phase 1 — Foundation
+## 🏗️ Phase 1 — Foundation
 
 - [x] Project initialization
 - [x] Repository structure
@@ -501,7 +536,7 @@ TaskFlow is being developed incrementally.
 - [ ] Authentication
 - [ ] User management
 
-## Phase 2 — Core Features
+## 🚀 Phase 2 — Core Features
 
 - [ ] Project CRUD
 - [ ] Project membership
@@ -513,7 +548,7 @@ TaskFlow is being developed incrementally.
 - [ ] Due dates
 - [ ] Comments
 
-## Phase 3 — API Improvements
+## ⚡ Phase 3 — API Improvements
 
 - [ ] Pagination
 - [ ] Filtering
@@ -523,7 +558,7 @@ TaskFlow is being developed incrementally.
 - [ ] API documentation
 - [ ] Automated testing
 
-## Phase 4 — Frontend
+## 🎨 Phase 4 — Frontend
 
 - [ ] Authentication interface
 - [ ] Dashboard
@@ -534,7 +569,7 @@ TaskFlow is being developed incrementally.
 - [ ] Comments
 - [ ] Responsive UI
 
-## Phase 5 — Advanced Features
+## 🔮 Phase 5 — Advanced Features
 
 - [ ] Activity logs
 - [ ] Notifications
@@ -548,7 +583,7 @@ TaskFlow is being developed incrementally.
 
 ---
 
-# Contributing
+# 🤝 Contributing
 
 TaskFlow is open source and contributions are welcome.
 
@@ -558,12 +593,12 @@ Before contributing, please review:
 - `CODE_OF_CONDUCT.md`
 - `LICENSE`
 
-### Contribution workflow
+### Contribution Workflow
 
 1. Fork the repository
 2. Create a feature branch
 3. Implement your changes
-4. Run the relevant tests and checks
+4. Run tests and quality checks
 5. Commit your changes
 6. Push your branch
 7. Open a Pull Request
@@ -574,76 +609,80 @@ Example:
 git checkout -b feature/project-members
 ```
 
-Commit using a clear message:
+Use clear and descriptive commit messages:
 
 ```bash
 git commit -m "feat: add project member management"
 ```
 
-Please keep pull requests focused and consistent with the existing architecture.
+Please keep pull requests focused and consistent with the project's architecture.
 
 ---
 
-# Project Ownership
+# 📄 License
 
-TaskFlow is an open-source project created and originally developed by **[Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)**.
-
-The project is publicly available to encourage learning, collaboration, experimentation, and community contributions.
-
-Open-source availability does not remove the project's copyright. The source code is made available to others under the terms of the project's license.
-
-The repository's `LICENSE` file defines the permissions and conditions under which the source code may be used, modified, and distributed.
-
-For project governance and contribution ownership, please refer to the repository's contribution and licensing documentation.
-
----
-
-# License
-
-Copyright © 2026 **[Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)**.
+Copyright © 2026 **Youssef Shaaban**.
 
 TaskFlow is licensed under the **MIT License**.
 
-See the [`LICENSE`](./LICENSE) file for the complete license text.
+See [`LICENSE`](./LICENSE) for the complete license text.
 
-The MIT License permits use, modification, distribution, and other activities subject to its terms. Copyright and license notices must be retained as required by the license.
-
-For an open-source repository, the `LICENSE` file should be kept at the root of the project so GitHub and users can clearly identify the project's licensing terms.
+The MIT License allows users to use, modify, and distribute the software subject to its terms.
 
 ---
 
-# Maintainer
+# 👨‍💻 Maintainer
 
-### [Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)
+### Youssef Shaaban
 
 Senior Software Engineer focused on building reliable, scalable, and user-centered digital products.
 
-|               |                                                                       |
-| ------------- | --------------------------------------------------------------------- |
-| **LinkedIn**  | [Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)   |
-| **Portfolio** | [devyoussefshaaban.vercel.app](https://devyoussefshaaban.vercel.app/) |
-| **GitHub**    | [devyoussefshaaban](https://github.com/devyoussefshaaban)             |
-| **Email**     | [imdevyoussef@gmail.com](mailto:imdevyoussef@gmail.com)               |
-| **WhatsApp**  | [+20 12 8153 4401](https://wa.me/201281534401)                        |
+|                  |                                                                       |
+| ---------------- | --------------------------------------------------------------------- |
+| 💼 **LinkedIn**  | [Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)   |
+| 🌐 **Portfolio** | [devyoussefshaaban.vercel.app](https://devyoussefshaaban.vercel.app/) |
+| 🐙 **GitHub**    | [devyoussefshaaban](https://github.com/devyoussefshaaban)             |
+| 📧 **Email**     | [imdevyoussef@gmail.com](mailto:imdevyoussef@gmail.com)               |
+| 💬 **WhatsApp**  | [+20 12 8153 4401](https://wa.me/201281534401)                        |
 
 ---
 
-# Acknowledgements
+# 🙌 Acknowledgements
 
-TaskFlow is built using and inspired by the modern open-source ecosystem around TypeScript, NestJS, React, Next.js, Prisma, PostgreSQL, and related technologies.
+TaskFlow is built on the work of the open-source communities behind:
 
-The project would not exist without the work of the open-source communities behind these technologies.
+**TypeScript · NestJS · React · Next.js · Prisma · PostgreSQL · Tailwind CSS**
 
----
-
-## ⭐ Support the Project
-
-If TaskFlow is useful to you, consider giving the repository a ⭐ on GitHub.
-
-Contributions, feedback, bug reports, and feature discussions are welcome.
+A huge thanks to everyone contributing to the ecosystem that makes projects like TaskFlow possible.
 
 ---
 
-**TaskFlow — Plan. Organize. Collaborate. Deliver.**
+# ⭐ Support the Project
 
-Created and maintained by **[Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)**.
+If TaskFlow is useful to you:
+
+⭐ **Star the repository**
+
+🐛 **Report bugs**
+
+💡 **Suggest features**
+
+🤝 **Contribute**
+
+💬 **Start a discussion**
+
+Every contribution and piece of feedback helps the project grow.
+
+---
+
+<div align="center">
+
+### 🚀 TaskFlow
+
+**Plan. Organize. Collaborate. Deliver.**
+
+🟢 **Open Source · Actively Developed · Contributions Welcome**
+
+Created and maintained by **[Youssef Shaaban](https://www.linkedin.com/in/imdevyoussefshaaban/)**
+
+</div>
