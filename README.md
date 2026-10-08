@@ -12,6 +12,12 @@ Built with **NestJS, Prisma, PostgreSQL, Next.js, React, and TypeScript**, TaskF
 
 ---
 
+## 🚀 Live Preview
+
+> ### ✨ [Try TaskFlow Live](https://taskfloo.vercel.app/)
+>
+> Explore the latest version of TaskFlow and see the project management experience in action.
+
 ## 🟢 Open Source & Actively Developed
 
 TaskFlow is an **open-source project under active development**.
