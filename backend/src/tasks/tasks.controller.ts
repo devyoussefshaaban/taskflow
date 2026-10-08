@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
@@ -15,6 +16,7 @@ import { UpdateTaskDto } from './dto/update-task-dto';
 import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 import type { AuthUser } from 'src/auth/types/auth-user.type';
+import { Priority, Status } from 'generated/prisma/enums';
 
 @Controller('tasks')
 export class TasksController {
@@ -22,8 +24,13 @@ export class TasksController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  findAll(@CurrentUser() user: AuthUser) {
-    return this.tasksService.findAll(user.userId);
+  findAll(
+    @CurrentUser() user: AuthUser,
+    @Query('status') status?: Status,
+    @Query('priority') priority?: Priority,
+    @Query('search') search?: string,
+  ) {
+    return this.tasksService.findAll(user.userId, status, priority, search);
   }
 
   @Get(':id')

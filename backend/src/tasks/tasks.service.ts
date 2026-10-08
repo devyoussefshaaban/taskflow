@@ -1,6 +1,6 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
-import { Prisma } from '../../generated/prisma/client';
+import { Priority, Prisma, Status } from '../../generated/prisma/client';
 import { CreateTaskDto } from './dto/create-task-dto';
 import { UpdateTaskDto } from './dto/update-task-dto';
 
@@ -8,11 +8,36 @@ import { UpdateTaskDto } from './dto/update-task-dto';
 export class TasksService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  async findAll(userId: number) {
+  async findAll(
+    userId: number,
+    status?: Status,
+    priority?: Priority,
+    search?: string,
+  ) {
+    console.log({ status, priority, search });
     return await this.dbService.task.findMany({
       where: {
         userId,
+        ...(status && { status }),
+        ...(priority && { priority }),
+        ...(search && {
+          OR: [
+            {
+              title: {
+                contains: search,
+                mode: 'insensitive',
+              },
+            },
+            {
+              description: {
+                contains: search,
+                mode: 'insensitive',
+              },
+            },
+          ],
+        }),
       },
+      orderBy: { createdAt: 'desc' },
     });
   }
 
