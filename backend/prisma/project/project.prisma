@@ -1,12 +1,13 @@
 model Project {
-    id          Int      @id @default(autoincrement())
-    name        String   @unique()
-    description String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String   @unique()
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-    ownerId Int
-    owner   User @relation(fields: [ownerId], references: [id])
+  ownerId Int
+  owner   User @relation(fields: [ownerId], references: [id])
 
-    tasks Task[]
+  tasks   Task[]
+  members Project_Member[]
 }
