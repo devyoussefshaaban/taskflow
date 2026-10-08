@@ -78,8 +78,6 @@ export class PojectMemberService {
     }
   }
 
-  async findOne(projectId: number, userId: number, memberId: number) {}
-
   update(id: number, updatePojectMemberDto: UpdatePojectMemberDto) {
     return `This action updates a #${id} pojectMember`;
   }

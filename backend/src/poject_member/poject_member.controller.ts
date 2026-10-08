@@ -43,11 +43,6 @@ export class PojectMemberController {
     return this.pojectMemberService.findAll(projectId, user.userId);
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pojectMemberService.findOne(+id);
-  }
-
   @Patch(':id')
   update(
     @Param('id') id: string,
