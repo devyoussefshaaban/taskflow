@@ -8,10 +8,26 @@ import { Prisma } from 'generated/prisma/client';
 export class ProjectsService {
   constructor(private readonly dbService: DatabaseService) {}
 
-  create(createProjectDto: CreateProjectDto, ownerId: number) {
-    return this.dbService.project.create({
-      data: { ...createProjectDto, ownerId },
-    });
+  async create(createProjectDto: CreateProjectDto, ownerId: number) {
+    try {
+      const project = await this.dbService.project.findUnique({
+        where: {
+          ownerId,
+          name: createProjectDto.name,
+        },
+      });
+
+      if (project) throw new ConflictException('Project with same name exists');
+
+      return this.dbService.project.create({
+        data: { ...createProjectDto, ownerId },
+      });
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        throw new ConflictException('Project with same name exists.');
+      }
+      throw error;
+    }
   }
 
   findAll(ownerId: number, search?: string) {

@@ -47,8 +47,9 @@ export class TasksController {
   createTask(
     @Body() createTaskDto: CreateTaskDto,
     @CurrentUser() user: AuthUser,
+    @Param('projectId', ParseIntPipe) projectId: number,
   ) {
-    return this.tasksService.createTask(createTaskDto, user.userId);
+    return this.tasksService.createTask(createTaskDto, user.userId, projectId);
   }
 
   @Patch(':id')

@@ -66,10 +66,14 @@ export class TasksService {
     }
   }
 
-  async createTask(createTaskDto: CreateTaskDto, userId: number) {
+  async createTask(
+    createTaskDto: CreateTaskDto,
+    userId: number,
+    projectId: number,
+  ) {
     try {
       return await this.dbService.task.create({
-        data: { ...createTaskDto, userId },
+        data: { ...createTaskDto, userId, projectId },
       });
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError) {
