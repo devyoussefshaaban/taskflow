@@ -3,7 +3,7 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
-import { DatabaseService } from 'src/database/database.service';
+import { DatabaseService } from '../database/database.service';
 import { RegisterDto } from './dto/register.dto';
 import bcrypt from 'bcrypt';
 import { Prisma } from 'generated/prisma/client';
