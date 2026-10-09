@@ -14,7 +14,7 @@ import { CreatePojectMemberDto } from './dto/create-poject_member.dto';
 import { UpdatePojectMemberDto } from './dto/update-poject_member.dto';
 import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
 import type { AuthUser } from 'src/auth/types/auth-user.type';
-import { JwtAuthGuard } from 'src/auth/guards/auth.guard';
+import { JwtAuthGuard } from '../auth/guards/auth.guard';
 
 @Controller('poject-member')
 export class PojectMemberController {
