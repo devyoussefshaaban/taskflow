@@ -15,12 +15,14 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import type { AuthUser } from '../auth/types/auth-user.type';
 import { JwtAuthGuard } from '../auth/guards/auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('projects')
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
   @Post()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   create(
     @Body() createProjectDto: CreateProjectDto,
@@ -30,12 +32,14 @@ export class ProjectsController {
   }
 
   @Get()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   findAll(@CurrentUser() user: AuthUser, @Param('search') search: string) {
     return this.projectsService.findAll(user.userId, search);
   }
 
   @Get(':id')
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   findOne(
     @Param('id', ParseIntPipe) id: number,
@@ -45,6 +49,7 @@ export class ProjectsController {
   }
 
   @Patch(':id')
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   update(
     @Param('id', ParseIntPipe) id: number,
@@ -55,6 +60,7 @@ export class ProjectsController {
   }
 
   @Delete(':id')
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   remove(@Param('id') id: number, @CurrentUser() user: AuthUser) {
     return this.projectsService.remove(id, user.userId);

@@ -15,12 +15,14 @@ import { UpdatePojectMemberDto } from './dto/update-poject_member.dto';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import type { AuthUser } from '../auth/types/auth-user.type';
 import { JwtAuthGuard } from '../auth/guards/auth.guard';
+import { ApiBearerAuth } from '@nestjs/swagger';
 
 @Controller('poject-member')
 export class PojectMemberController {
   constructor(private readonly pojectMemberService: PojectMemberService) {}
 
   @Post()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   create(
     @Body() createPojectMemberDto: CreatePojectMemberDto,
@@ -35,6 +37,7 @@ export class PojectMemberController {
   }
 
   @Get()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   findAll(
     @Param('projectId', ParseIntPipe) projectId: number,

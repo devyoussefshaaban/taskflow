@@ -9,14 +9,23 @@ export class TasksService {
   constructor(private readonly dbService: DatabaseService) {}
 
   async findAll(
+    projectId: number,
     userId: number,
     status?: Status,
     priority?: Priority,
     search?: string,
   ) {
-    console.log({ status, priority, search });
+    const project = await this.dbService.project.findUnique({
+      where: {
+        id: projectId,
+      },
+    });
+
+    if (!project) throw new ConflictException('Project not found.');
+
     return await this.dbService.task.findMany({
       where: {
+        projectId,
         userId,
         ...(status && { status }),
         ...(priority && { priority }),
@@ -72,6 +81,16 @@ export class TasksService {
     projectId: number,
   ) {
     try {
+      const isExists = await this.dbService.task.findUnique({
+        where: {
+          id: projectId,
+          title: createTaskDto.title,
+        },
+      });
+
+      if (isExists)
+        throw new ConflictException('Task already exists in the project.');
+
       return await this.dbService.task.create({
         data: { ...createTaskDto, userId, projectId },
       });
