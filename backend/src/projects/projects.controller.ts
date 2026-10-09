@@ -12,8 +12,8 @@ import {
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import type { AuthUser } from 'src/auth/types/auth-user.type';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import type { AuthUser } from '../auth/types/auth-user.type';
 import { JwtAuthGuard } from '../auth/guards/auth.guard';
 
 @Controller('projects')

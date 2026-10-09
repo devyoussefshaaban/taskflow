@@ -14,8 +14,8 @@ import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task-dto';
 import { UpdateTaskDto } from './dto/update-task-dto';
 import { JwtAuthGuard } from '../auth/guards/auth.guard';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
-import type { AuthUser } from 'src/auth/types/auth-user.type';
+import { CurrentUser } from '../auth/decorators/current-user.decorator';
+import type { AuthUser } from '../auth/types/auth-user.type';
 import { Priority, Status } from 'generated/prisma/enums';
 
 @Controller('tasks')
