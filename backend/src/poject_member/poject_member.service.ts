@@ -6,7 +6,7 @@ import {
 import { CreatePojectMemberDto } from './dto/create-poject_member.dto';
 import { UpdatePojectMemberDto } from './dto/update-poject_member.dto';
 import { DatabaseService } from '../database/database.service';
-import { Prisma } from 'generated/prisma/client';
+import { Prisma } from '../../generated/prisma/client';
 
 @Injectable()
 export class PojectMemberService {

@@ -6,7 +6,7 @@ import {
 import { DatabaseService } from '../database/database.service';
 import { RegisterDto } from './dto/register.dto';
 import bcrypt from 'bcrypt';
-import { Prisma } from 'generated/prisma/client';
+import { Prisma } from '../../generated/prisma/client';
 import { LoginDto } from './dto/login.dto';
 import { JwtService } from '@nestjs/jwt';
 
