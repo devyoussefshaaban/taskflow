@@ -42,14 +42,15 @@ export class TasksController {
     );
   }
 
-  @Get(':projectId/tasks')
+  @Get(':projectId/tasks/:id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   findOne(
     @Param('projectId', ParseIntPipe) projectId: number,
+    @Param('id', ParseIntPipe) id: number,
     @CurrentUser() user: AuthUser,
   ) {
-    return this.tasksService.findOne(projectId, user.userId);
+    return this.tasksService.findOne(projectId, id, user.userId);
   }
 
   @Post(':projectId/tasks')
@@ -67,20 +68,27 @@ export class TasksController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   updateTask(
+    @Param('projectId', ParseIntPipe) projectId: number,
     @Param('projectId', ParseIntPipe) id: number,
     @CurrentUser() user: AuthUser,
     @Body() updateTaskDto: UpdateTaskDto,
   ) {
-    return this.tasksService.updateTask(id, updateTaskDto, user.userId);
+    return this.tasksService.updateTask(
+      projectId,
+      id,
+      updateTaskDto,
+      user.userId,
+    );
   }
 
   @Delete(':projectId/tasks/:id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   deleteTask(
+    @Param('projectId', ParseIntPipe) projectId: number,
     @Param('id', ParseIntPipe) id: number,
     @CurrentUser() user: AuthUser,
   ) {
-    return this.tasksService.deleteTask(id, user.userId);
+    return this.tasksService.deleteTask(projectId, id, user.userId);
   }
 }

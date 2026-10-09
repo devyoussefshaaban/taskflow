@@ -50,10 +50,11 @@ export class TasksService {
     });
   }
 
-  async findOne(id: number, userId: number) {
+  async findOne(projectId: number, id: number, userId: number) {
     try {
       const task = await this.dbService.task.findUnique({
         where: {
+          projectId,
           id,
           userId,
         },
@@ -106,10 +107,23 @@ export class TasksService {
     }
   }
 
-  async updateTask(id: number, updateTaskDto: UpdateTaskDto, userId: number) {
+  async updateTask(
+    projectId: number,
+    id: number,
+    updateTaskDto: UpdateTaskDto,
+    userId: number,
+  ) {
     try {
+      const project = await this.dbService.project.findUnique({
+        where: {
+          id: projectId,
+        },
+      });
+
+      if (!project) throw new ConflictException('Project not found.');
       const task = await this.dbService.task.findUnique({
         where: {
+          projectId,
           id,
           userId,
         },
@@ -117,6 +131,7 @@ export class TasksService {
       if (!task) throw new ConflictException('Task not found');
       return this.dbService.task.update({
         where: {
+          projectId,
           id,
           userId,
         },
@@ -132,17 +147,28 @@ export class TasksService {
     }
   }
 
-  async deleteTask(id: number, userId: number) {
+  async deleteTask(projectId: number, id: number, userId: number) {
     try {
+      const project = await this.dbService.project.findUnique({
+        where: {
+          id: projectId,
+        },
+      });
+
+      if (!project) throw new ConflictException('Project not found.');
+
       const task = await this.dbService.task.findUnique({
         where: {
+          projectId,
           id,
           userId,
         },
       });
+
       if (!task) throw new ConflictException('Task not found.');
       return this.dbService.task.delete({
         where: {
+          projectId,
           id,
           userId,
         },
