@@ -81,9 +81,9 @@ export class TasksService {
     projectId: number,
   ) {
     try {
-      const isExists = await this.dbService.task.findUnique({
+      const isExists = await this.dbService.task.findFirst({
         where: {
-          id: projectId,
+          projectId,
           title: createTaskDto.title,
         },
       });
